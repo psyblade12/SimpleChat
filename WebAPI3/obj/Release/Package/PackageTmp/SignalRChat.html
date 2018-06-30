@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>SignalR Simple Chat</title>
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script src="Scripts/jquery.signalR-2.3.0.min.js"></script>
+    <script src="signalr/hubs"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .dont-break-out {
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          -ms-word-break: break-all;
+          word-break: break-all;
+          word-break: break-word;
+          -ms-hyphens: auto;
+          -moz-hyphens: auto;
+          -webkit-hyphens: auto;
+          hyphens: auto;
+        }
+        .font-bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid" ng-app="chatApp" ng-controller="chatAppCtrl">
+        <div class="row">
+            <div class="col-xs-4"></div>
+            <div class="col-xs-4">
+                <img class="img-responsive center-block" src="https://zippy.gfycat.com/SkinnySeveralAsianlion.gif" ng-show="IsSignalRNotDone">
+                <form ng-submit="submitNickName()" ng-show="HasInputNickName">
+                    <label>Điền nick name để bắt đầu chat: </label>
+                    <input type="text" ng-model="chatNickName">
+                    <input type="submit" value="OK">
+                </form>
+                <div id="chatDisplay">
+                    <div class="dont-break-out" ng-repeat="x in chatRecords"><span class="font-bold">{{x.name}}</span>: {{x.message}}</div>
+                </div>
+                <form ng-submit="submitChat()" ng-show="chatInputShow">
+                    <label>Nói:</label>
+                    <input type="text" ng-model="chatMessToPush">
+                    <input type="submit" value="OK">
+                </form>
+            </div>
+            <div class="col-xs-4"></div>  
+        </div>
+    </div>
+    <script>
+        var app = angular.module('chatApp', []);
+        app.controller('chatAppCtrl', function ($scope) {
+            
+            $scope.IsSignalRNotDone = true;
+            $scope.HasInputNickName = true;
+            $scope.chatRecords = [];
+            $scope.chatInputShow = false;
+
+            //Initialize a new connection
+            $scope.chat = $.connection.chatHub;
+            $.connection.hub.start().done(function () {
+                $scope.IsSignalRNotDone = false;
+                $scope.$apply();
+            });
+
+            //Broadcast function, awaiting server.
+            $scope.chat.client.broadcastmessage = function (name, message) {
+                var newMess = { name, message }
+                $scope.chatRecords.push(newMess);
+                $scope.$apply();
+            };
+
+            //Các function xử lý
+            $scope.submitNickName = function () {
+                if ($scope.chatNickName != undefined && $scope.chatNickName != "")
+                {
+                    $scope.chat.server.join($scope.chatNickName);
+                    $scope.HasInputNickName = false;
+                    $scope.chatInputShow = true;
+                }
+                else
+                {
+                    alert("Hãy nhập tên");
+                }
+            }
+
+            $scope.submitChat = function () {
+                if ($scope.chatMessToPush != undefined && $scope.chatMessToPush != "") {
+                    $scope.chat.server.send($scope.chatNickName, $scope.chatMessToPush);
+                    $scope.chatMessToPush = "";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
