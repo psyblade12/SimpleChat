@@ -1,0 +1,22 @@
+﻿ID,Hair,Tops,Bottoms,Heights,Chest,Earrings,Necklace,Eyelashes,Gender
+1,Long,Shirt,Dress,155,Large,Yes,Yes,Long,Female
+2,Short,T-Shirt,Long trousers,175,Small,Yes,Yes,Short,Male
+3,Short,T-Shirt,Long trousers,160,Small,No,Yes,Medium,Female
+4,Long,Shirt,Long trousers,180,Medium,No,No,Short,Male
+5,Short,T-Shirt,Short trousers,155,Large,Yes,Yes,Long,Female
+6,Long,T-Shirt,Long trousers,170,Large,No,Yes,Long,Female
+7,Short,CropTop,Short trousers,145,Small,Yes,No,Short,Female
+8,Long,Shirt,Dress,168,Large,Yes,Yes,Long,Female
+9,Short,CropTop,Dress,170,Large,Yes,Yes,Long,Female
+10,Long,Shirt,Long trousers,155,Small,Yes,Yes,Long,Female
+11,Short,T-Shirt,Long trousers,172,Medium,No,No,Short,Male
+12,Short,Shirt,Long trousers,168,Small,No,No,Short,Male
+13,Short,T-Shirt,Long trousers,169,Small,No,No,Short,Male
+14,Short,Shirt,Short trousers,175,Medium,Yes,No,Long,Male
+15,Short,T-Shirt,Long trousers,180,Medium,No,No,Short,Male
+16,Short,T-Shirt,Long trousers,172,Medium,No,No,Short,Male
+17,Short,T-Shirt,Long trousers,174,Medium,No,No,Short,Male
+18,Short,Shirt,Short trousers,160,Medium,No,No,Short,Male
+19,Long,T-Shirt,Short trousers,163,Medium,No,No,Short,Female
+20,Short,T-Shirt,Long trousers,170,Medium,Yes,Yes,Short,Male
+21,Short,T-Shirt,Long trousers,177,Large,No,No,Short,Male
