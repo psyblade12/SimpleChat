@@ -5,4 +5,4 @@ This is just a pet project. The purpose of making this project is just that I wa
 The front-end web is currently being written using AngularJS, but in the future, I will change to React. I don't know much about React, so I'm temporary using AngularJS to make the front end, but in the future, React will be used.
 
 To see SimpleChat, just visit this link:
-http://thuanwebapp.azurewebsites.net/SignalRChat.html
+https://thuansimplewebchat.azurewebsites.net/SignalRChat.html
